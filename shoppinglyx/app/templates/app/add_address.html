@@ -1,0 +1,37 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <h3>Welcome {{current_usr}}</h3>
+  <div class="col-sm-2 border-end">
+   <ul class="list-unstyled">
+    <li class="d-grid"><a href="{% url 'app:profile' %}" class="btn">Profile</a></li>
+    <li class="d-grid"><a href="{% url 'app:add_address' %}" class="btn {{active}}">Add new Address</a></li>
+    <li class="d-grid"><a href="{% url 'app:address' %}" class="btn ">Address</a></li>
+   </ul>
+  </div>
+  <div class="col-sm-8 offset-sm-1">
+   <form action="" method="post">
+    {% csrf_token %}
+    {% for fm in form %}
+        <div class="form-group">
+            {{fm.label_tag}} {{fm}}
+            <small class="text-danger">
+                {{fm.errors|striptags}}
+            </small>
+            <br>
+        </div>
+        {% endfor %}
+        <input type="submit" value="save" class="btn btn-primary mt-4">
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p class="alert alert-danger my-3">{{error}}</p>
+            {% endfor %}
+        {% endif %}
+   </form>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}
