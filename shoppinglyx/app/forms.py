@@ -16,7 +16,7 @@ class CustomerRegistrationForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
         lables = {'email':'Email'}
-        widgets = {'username':forms.TextInput(attrs={'class':'from-control'})}
+        widgets = {'username':forms.TextInput(attrs={'class':'form-control'})}
 
 class LoginForm(AuthenticationForm):
     username = UsernameField(widget=forms.TextInput(attrs={'autofocus':True, 'class':'form-control'}))
