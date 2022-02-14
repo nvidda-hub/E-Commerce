@@ -24,10 +24,17 @@ from django.db.models.query_utils import Q
 from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
+from django.conf import settings
+from django.core.cache.backends.base import DEFAULT_TIMEOUT
+from django.views.decorators.cache import cache_page
 
 
 db_client = pymongo.MongoClient('mongodb://localhost:27017/')
 db = db_client.shop_database
+
+
+CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
+
 
 # def home(request):                # Function Based view
 #  return render(request, 'app/home.html')
@@ -184,6 +191,7 @@ def orders(request):
 def change_password(request):
     return render(request, 'app/changepassword.html')
 
+@cache_page(CACHE_TTL)
 def laptop(request, data=None):
     laptops = []
     if data == 'all':
