@@ -10,4 +10,4 @@
 **Step 5 :**  To start developement server Run : python3 manage.py runserver
 
 This is a Static DJango Shopping Website 
-![alt text](https://github.com/nvidda-hub/E-Commerce/blob/master/shoppinglyx/Screenshots/home.jpg)
+![alt text](https://github.com/nvidda-hub/E-Commerce/blob/master/shoppinglyx/Screenshots/home.png)
