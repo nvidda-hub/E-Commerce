@@ -29,8 +29,10 @@ from django.core.cache.backends.base import DEFAULT_TIMEOUT
 from django.views.decorators.cache import cache_page
 
 
-db_client = pymongo.MongoClient('mongodb://localhost:27017/')
-db = db_client.shop_database
+# db_client = pymongo.MongoClient('mongodb://localhost:27017/')
+# db = db_client.shop_database
+db_cluster_client = pymongo.MongoClient('mongodb+srv://django-user:django-user@cluster0.gwtya.mongodb.net/shop_database')
+db = db_cluster_client.shop_database
 
 
 CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)

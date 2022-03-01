@@ -76,10 +76,23 @@ WSGI_APPLICATION = 'shoppinglyx.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# for MongoDB Localhost
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         'NAME': 'shop_database',
+#     }
+# }
+
+# for MongoDB Cluster
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'shop_database',
+        'ENFORCE_SCHEMA':False,
+        'CLIENT':{
+            'host':'mongodb+srv://django-user:django-user@cluster0.gwtya.mongodb.net/shop_database',
+        }
     }
 }
 
